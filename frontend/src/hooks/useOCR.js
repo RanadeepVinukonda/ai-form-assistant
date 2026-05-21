@@ -1,6 +1,29 @@
 import { useState, useCallback } from "react"
 import { createWorker } from "tesseract.js"
 
+async function pdfToImage(file, setProgress) {
+  const { getDocument, GlobalWorkerOptions } = await import("pdfjs-dist")
+  GlobalWorkerOptions.workerSrc = undefined
+  const pdf = await getDocument({ data: await file.arrayBuffer() }).promise
+  const canvas = document.createElement("canvas")
+  const ctx = canvas.getContext("2d")
+  let fullText = ""
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i)
+    const vp = page.getViewport({ scale: 2 })
+    canvas.width = vp.width
+    canvas.height = vp.height
+    await page.render({ canvasContext: ctx, viewport: vp }).promise
+    const worker = await createWorker("eng", 1, {
+      logger: (m) => { if (m.status === "recognizing text") setProgress(Math.round((i - 1 + m.progress) / pdf.numPages * 100)) },
+    })
+    const { data } = await worker.recognize(canvas)
+    await worker.terminate()
+    fullText += (fullText ? "\n" : "") + data.text
+  }
+  return fullText
+}
+
 export function useOCR() {
   const [progress, setProgress] = useState(0)
   const [result, setResult] = useState(null)
@@ -16,15 +39,21 @@ export function useOCR() {
     return w
   }, [])
 
-  const extractText = useCallback(async (imageFile) => {
+  const extractText = useCallback(async (file) => {
     setLoading(true)
     setError(null)
     setProgress(0)
     try {
-      const w = worker || (await initWorker())
-      const { data } = await w.recognize(imageFile)
-      setResult({ text: data.text, blocks: data.blocks, confidence: data.confidence })
-      return data.text
+      let text
+      if (file.type === "application/pdf") {
+        text = await pdfToImage(file, setProgress)
+      } else {
+        const w = worker || (await initWorker())
+        const { data } = await w.recognize(file)
+        text = data.text
+      }
+      setResult({ text, blocks: null, confidence: null })
+      return text
     } catch (err) {
       setError(err.message)
       return null

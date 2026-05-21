@@ -9,22 +9,50 @@ export default function DocumentUploader({ onTextExtracted }) {
   const [fileName, setFileName] = useState("")
   const navigate = useNavigate()
 
+  async function pdfToImage(file) {
+    const { getDocument, GlobalWorkerOptions } = await import("pdfjs-dist")
+    GlobalWorkerOptions.workerSrc = undefined
+    const pdf = await getDocument({ data: await file.arrayBuffer() }).promise
+    const canvas = document.createElement("canvas")
+    const ctx = canvas.getContext("2d")
+    let fullText = ""
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i)
+      const vp = page.getViewport({ scale: 2 })
+      canvas.width = vp.width
+      canvas.height = vp.height
+      await page.render({ canvasContext: ctx, viewport: vp }).promise
+      const { createWorker } = await import("tesseract.js")
+      const worker = await createWorker("eng", 1, {
+        logger: (m) => { if (m.status === "recognizing text") setProgress(Math.round((i - 1 + m.progress) / pdf.numPages * 100)) },
+      })
+      const { data } = await worker.recognize(canvas)
+      await worker.terminate()
+      fullText += (fullText ? "\n" : "") + data.text
+    }
+    return fullText
+  }
+
   async function handleFile(file) {
     if (!file) return
     setFileName(file.name)
     setLoading(true)
     setProgress(0)
 
-    const { createWorker } = await import("tesseract.js")
-    const worker = await createWorker("eng", 1, {
-      logger: (m) => { if (m.status === "recognizing text") setProgress(Math.round(m.progress * 100)) },
-    })
-    const { data } = await worker.recognize(file)
-    await worker.terminate()
+    let extracted
+    if (file.type === "application/pdf") {
+      extracted = await pdfToImage(file)
+    } else {
+      const { createWorker } = await import("tesseract.js")
+      const worker = await createWorker("eng", 1, {
+        logger: (m) => { if (m.status === "recognizing text") setProgress(Math.round(m.progress * 100)) },
+      })
+      const { data } = await worker.recognize(file)
+      await worker.terminate()
+      extracted = data.text.trim()
+    }
 
     setProgress(100)
-
-    const extracted = data.text.trim()
     setLoading(false)
 
     if (onTextExtracted) {
