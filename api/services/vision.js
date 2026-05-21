@@ -14,7 +14,7 @@ if (OR_KEY) {
 }
 
 async function extractViaOpenRouter(imageBase64, mimeType) {
-  const model = process.env.OPENROUTER_VISION_MODEL || "openrouter/free"
+  const model = process.env.OPENROUTER_VISION_MODEL || "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
   const res = await orClient.chat.completions.create({
     model,
     messages: [{
