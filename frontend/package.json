@@ -21,7 +21,10 @@
     "react-helmet-async": "^2.0.0",
     "react-dropzone": "^14.0.0",
     "date-fns": "^4.0.0",
-    "firebase": "^11.0.0",
+    "@firebase/app": "^0.13.0",
+    "@firebase/auth": "^1.10.0",
+    "@firebase/firestore": "^4.8.0",
+    "@firebase/storage": "^0.13.0",
     "tesseract.js": "^7.0.0",
     "pdfjs-dist": "^4.0.0",
     "lucide-react": "^0.400.0"
