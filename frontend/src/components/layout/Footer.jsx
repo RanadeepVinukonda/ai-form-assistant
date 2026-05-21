@@ -6,16 +6,15 @@ export default function Footer() {
       <div className="section-container py-12">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           <div>
-            <h4 className="font-semibold text-white mb-3">FormAssist</h4>
-            <p className="text-sm">Complete complex forms with AI guidance. Free, fast, and private.</p>
+            <h4 className="font-semibold text-white mb-3">DocAssist</h4>
+            <p className="text-sm">Upload any document. AI extracts, explains, and helps you fill it correctly.</p>
           </div>
           <div>
-            <h4 className="font-semibold text-white mb-3">Forms</h4>
+            <h4 className="font-semibold text-white mb-3">Features</h4>
             <ul className="space-y-1.5 text-sm">
-              <li><Link to="/forms/visa" className="hover:text-white transition-colors">Visa Forms</Link></li>
-              <li><Link to="/forms/tax" className="hover:text-white transition-colors">Tax Forms</Link></li>
-              <li><Link to="/forms/education" className="hover:text-white transition-colors">Education Forms</Link></li>
-              <li><Link to="/forms/government" className="hover:text-white transition-colors">Government Forms</Link></li>
+              <li><Link to="/" className="hover:text-white transition-colors">Upload Document</Link></li>
+              <li><Link to="/chat" className="hover:text-white transition-colors">AI Chat</Link></li>
+              <li><Link to="/dashboard" className="hover:text-white transition-colors">Dashboard</Link></li>
             </ul>
           </div>
           <div>
@@ -28,7 +27,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-xs">
-          &copy; {new Date().getFullYear()} FormAssist. All rights reserved. This is an AI-assisted tool. Verify all information before submitting official forms.
+          &copy; {new Date().getFullYear()} DocAssist. All rights reserved. This is an AI-assisted tool. Verify all information before submitting official documents.
         </div>
       </div>
     </footer>

@@ -5,10 +5,7 @@ import Footer from "./components/layout/Footer"
 import SkipToContent from "./components/ui/SkipToContent"
 
 const Home = lazy(() => import("./routes/Home"))
-const FormCatalog = lazy(() => import("./routes/FormCatalog"))
-const FormPage = lazy(() => import("./routes/FormPage"))
-const FormFill = lazy(() => import("./routes/FormFill"))
-const OCRPage = lazy(() => import("./routes/OCRPage"))
+const DocumentReview = lazy(() => import("./routes/DocumentReview"))
 const ChatPage = lazy(() => import("./routes/ChatPage"))
 const Dashboard = lazy(() => import("./routes/Dashboard"))
 const SavedForms = lazy(() => import("./routes/SavedForms"))
@@ -35,11 +32,7 @@ export default function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/forms" element={<FormCatalog />} />
-            <Route path="/forms/:category" element={<FormCatalog />} />
-            <Route path="/forms/:category/:slug" element={<FormPage />} />
-            <Route path="/fill/:category/:slug" element={<FormFill />} />
-            <Route path="/ocr" element={<OCRPage />} />
+            <Route path="/review/:id" element={<DocumentReview />} />
             <Route path="/chat" element={<ChatPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/forms" element={<SavedForms />} />
@@ -48,7 +41,6 @@ export default function App() {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/blog" element={<BlogIndex />} />
             <Route path="/blog/:category/:slug" element={<BlogPost />} />
-            <Route path="/:category/:slug" element={<FormPage />} />
           </Routes>
         </Suspense>
       </main>

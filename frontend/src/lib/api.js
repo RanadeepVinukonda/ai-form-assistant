@@ -21,22 +21,19 @@ async function request(path, options = {}) {
 }
 
 export const api = {
-  forms: {
-    list: (category) => request(`/forms${category ? `?category=${category}` : ""}`),
-    get: (slug) => request(`/forms/${slug}`),
-    explain: (slug, fieldId) => request(`/forms/${slug}/explain`, { method: "POST", body: { fieldId } }),
-    suggest: (slug, fieldId, formData) => request(`/forms/${slug}/suggest`, { method: "POST", body: { fieldId, formData } }),
-    validate: (slug, data) => request(`/forms/${slug}/validate`, { method: "POST", body: data }),
+  vision: {
+    extract: (image, mime) => request("/vision/extract", { method: "POST", body: { image, mime } }),
+  },
+  analyze: {
+    document: (text) => request("/analyze", { method: "POST", body: { text } }),
+    explain: (fieldLabel, documentTitle) => request("/analyze/explain", { method: "POST", body: { fieldLabel, documentTitle } }),
+    suggest: (fieldLabel, documentTitle, otherFields) => request("/analyze/suggest", { method: "POST", body: { fieldLabel, documentTitle, otherFields } }),
   },
   userForms: {
     list: () => request("/user-forms"),
     get: (id) => request(`/user-forms/${id}`),
     save: (data) => request("/user-forms", { method: "POST", body: data }),
     remove: (id) => request(`/user-forms/${id}`, { method: "DELETE" }),
-  },
-  ocr: {
-    autoFill: (formSlug, extractedText, language) =>
-      request("/ocr/auto-fill", { method: "POST", body: { formSlug, extractedText, language } }),
   },
   translate: (text, targetLang) =>
     request("/translate", { method: "POST", body: { text, targetLang } }),

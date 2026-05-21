@@ -1,115 +1,93 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Helmet } from "react-helmet-async"
-import { Search, ArrowRight, Shield, Zap, Globe, FileText, Scan, MessageSquare } from "lucide-react"
+import { Shield, Zap, Scan, MessageSquare, Globe, ArrowRight, FileText } from "lucide-react"
 import { Button } from "../components/ui"
-import DocumentUploader from "../components/ocr"
+import UploadZone from "../components/document/UploadZone"
 
 const features = [
-  { icon: FileText, title: "100+ Government Forms", desc: "From visa applications to tax returns — all in one place." },
-  { icon: Zap, title: "AI-Powered Guidance", desc: "Field-by-field explanations and smart suggestions as you fill." },
-  { icon: Scan, title: "OCR Auto-Fill", desc: "Upload a filled form, extract text, and auto-populate your answers." },
-  { icon: MessageSquare, title: "24/7 AI Chat Support", desc: "Ask questions in plain language while filling any form." },
-  { icon: Shield, title: "Private by Design", desc: "All OCR and data processing happens in your browser." },
-  { icon: Globe, title: "Multi-Language Support", desc: "Fill forms in English, Hindi, Spanish, and more." },
-]
-
-const categories = [
-  { name: "visa", label: "Visa Forms", count: 1, color: "bg-blue-50 text-blue-700 border-blue-200" },
-  { name: "tax", label: "Tax Forms", count: 1, color: "bg-green-50 text-green-700 border-green-200" },
-  { name: "government", label: "Government Forms", count: 2, color: "bg-amber-50 text-amber-700 border-amber-200" },
-  { name: "education", label: "Education Forms", count: 1, color: "bg-purple-50 text-purple-700 border-purple-200" },
+  { icon: Scan, title: "AI Vision Understanding", desc: "Upload any document — AI extracts every word using vision models." },
+  { icon: Zap, title: "Smart Field Detection", desc: "AI identifies and organizes fillable fields from your document." },
+  { icon: FileText, title: "Dynamic Form Generation", desc: "Every detected field becomes an editable, explainable form input." },
+  { icon: MessageSquare, title: "AI Explanations & Suggestions", desc: "Get plain-language explanations and smart fill suggestions for each field." },
+  { icon: Shield, title: "Private by Design", desc: "Your documents stay yours. Encryption in transit and at rest." },
+  { icon: Globe, title: "Any Document, Any Format", desc: "Works with images, PDFs, scanned docs — even handwriting (best effort)." },
 ]
 
 export default function Home() {
-  const [showOcr, setShowOcr] = useState(false)
+  const navigate = useNavigate()
+  const [uploaded, setUploaded] = useState(false)
+
+  function handleComplete(docId) {
+    setUploaded(true)
+    setTimeout(() => navigate(`/review/${docId}`), 600)
+  }
 
   return (
     <>
       <Helmet>
-        <title>AI Form Assistant — Complete Government Forms with AI Guidance</title>
-        <meta name="description" content="Fill visa applications, tax returns, passports, and government forms faster with AI-powered guidance, OCR auto-fill, and multi-language support." />
+        <title>DocAssist — Upload Any Document, AI Helps You Fill It</title>
+        <meta name="description" content="Upload any document, form, or application. AI extracts text, detects fields, explains each one, and suggests how to fill it correctly." />
       </Helmet>
 
-      {/* Hero */}
-      <section className="section-container py-16 sm:py-24 text-center">
+      {/* Hero + Upload */}
+      <section className="section-container py-12 sm:py-20 text-center">
         <div className="max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 trust-badge mb-4">
-            <Shield className="h-3.5 w-3.5" /> Private &middot; Secure &middot; Free
+          <div className="inline-flex items-center gap-2 trust-badge mb-2">
+            <Shield className="h-3.5 w-3.5" /> Private &middot; Secure &middot; AI-Powered
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Complete Forms with <span className="text-primary">AI Guidance</span>
+            Upload Any Document.
+            <br />
+            <span className="text-primary">AI Helps You Fill It.</span>
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            From visa applications to tax returns &mdash; fill any government form faster with field-by-field AI explanations, OCR auto-fill, and real-time validation.
+            Drop a form, application, or document. Our AI extracts the text, detects every field, explains what each one means, and suggests how to fill it correctly.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 pt-2">
-            <Link to="/forms"><Button size="lg">Browse Forms <ArrowRight className="h-4 w-4" /></Button></Link>
-            <Button variant="outline" size="lg" onClick={() => setShowOcr(!showOcr)}>
-              <Scan className="h-4 w-4" /> Upload &amp; Auto-Fill
-            </Button>
+          <div className="max-w-xl mx-auto pt-4">
+            <UploadZone onComplete={handleComplete} />
           </div>
-          {showOcr && <div className="max-w-md mx-auto"><DocumentUploader /></div>}
+          {uploaded && (
+            <div className="text-sm text-green-700 bg-green-50 px-4 py-2 rounded-lg inline-flex items-center gap-2">
+              <Scan className="h-4 w-4" /> Document analyzed! Opening review...
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Quick Upload CTA */}
-      <section className="section-container pb-12">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 border border-blue-100">
-          <div className="flex-1 text-center sm:text-left">
-            <h2 className="text-xl font-semibold mb-1">Already have a filled form?</h2>
-            <p className="text-sm text-gray-600">Upload a scanned copy and let our OCR extract the data automatically.</p>
-          </div>
-          <Link to="/ocr"><Button><Scan className="h-4 w-4" /> Upload Document</Button></Link>
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section className="section-container pb-16">
-        <h2 className="text-2xl font-semibold mb-6">Browse by Category</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {categories.map((cat) => (
-            <Link key={cat.name} to={`/forms/${cat.name}`} className={`p-4 rounded-xl border-2 ${cat.color} hover:shadow-sm transition-shadow`}>
-              <div className="text-sm font-medium">{cat.label}</div>
-              <div className="text-xs mt-1 opacity-75">{cat.count} form{cat.count !== 1 ? "s" : ""}</div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Features */}
+      {/* How it works */}
       <section className="bg-white border-t border-b py-16">
         <div className="section-container space-y-8">
-          <h2 className="text-2xl font-semibold text-center">Why FormAssist?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((f) => (
-              <div key={f.title} className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <f.icon className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-medium text-sm">{f.title}</h3>
-                  <p className="text-xs text-gray-500 mt-1">{f.desc}</p>
-                </div>
+          <h2 className="text-2xl font-semibold text-center">How It Works</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {[
+              { step: "1", title: "Upload a Document", desc: "Drop any image or PDF. The AI reads it using computer vision — no manual typing needed." },
+              { step: "2", title: "AI Analyzes & Extracts", desc: "Our AI identifies every fillable field, reads existing values, and describes what each field means." },
+              { step: "3", title: "Edit & Export", desc: "Review the auto-detected fields, edit values, get AI suggestions, and export your completed document." },
+            ].map((item) => (
+              <div key={item.step} className="text-center">
+                <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-lg font-bold mx-auto mb-3">{item.step}</div>
+                <h3 className="font-semibold mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-500">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="section-container py-16">
-        <h2 className="text-2xl font-semibold text-center mb-8">How It Works</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {[
-            { step: "1", title: "Choose a Form", desc: "Select from our library of government and legal forms." },
-            { step: "2", title: "Fill with AI Help", desc: "Get field-by-field guidance, AI suggestions, and instant validation." },
-            { step: "3", title: "Download & Submit", desc: "Review your completed form, download it, and submit to the authority." },
-          ].map((item) => (
-            <div key={item.step} className="text-center">
-              <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-lg font-bold mx-auto mb-3">{item.step}</div>
-              <h3 className="font-semibold mb-1">{item.title}</h3>
-              <p className="text-sm text-gray-500">{item.desc}</p>
+      {/* Features */}
+      <section className="section-container py-16 space-y-8">
+        <h2 className="text-2xl font-semibold text-center">Why DocAssist?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((f) => (
+            <div key={f.title} className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <f.icon className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-sm">{f.title}</h3>
+                <p className="text-xs text-gray-500 mt-1">{f.desc}</p>
+              </div>
             </div>
           ))}
         </div>

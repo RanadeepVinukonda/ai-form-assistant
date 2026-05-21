@@ -4,7 +4,7 @@ import { MessageSquare, Send, Bot, User, Sparkles } from "lucide-react"
 import { Card } from "../components/ui"
 import { api } from "../lib/api"
 
-const suggestions = ["What documents do I need for a US visa?", "How do I file ITR-1?", "What is a PAN number used for?", "How long does a passport take?"]
+const suggestions = ["How do I fill a government form?", "What should I include in a job application?", "How do I file a tax return?", "What documents do I need for a visa?"]
 
 export default function ChatPage() {
   const [messages, setMessages] = useState([

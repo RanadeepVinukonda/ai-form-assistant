@@ -5,8 +5,6 @@ import { Menu, X, FileText, User, LogIn } from "lucide-react"
 
 const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/forms", label: "Forms" },
-  { to: "/ocr", label: "Upload & OCR" },
   { to: "/blog", label: "Guides" },
   { to: "/pricing", label: "Pricing" },
 ]
@@ -22,7 +20,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 font-bold text-lg text-primary">
             <FileText className="h-5 w-5" />
-            <span>FormAssist</span>
+            <span>DocAssist</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

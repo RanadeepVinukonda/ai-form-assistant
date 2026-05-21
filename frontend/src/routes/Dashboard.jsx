@@ -20,7 +20,7 @@ export default function Dashboard() {
 
   return (
     <div className="section-container py-8 space-y-6">
-      <Helmet><title>Dashboard — AI Form Assistant</title></Helmet>
+      <Helmet><title>Dashboard — DocAssist</title></Helmet>
 
       <div className="flex items-center justify-between">
         <div>
@@ -34,8 +34,8 @@ export default function Dashboard() {
         <Link to="/dashboard/forms">
           <Card className="p-5 hover:shadow-md transition-shadow">
             <FileText className="h-6 w-6 text-primary mb-2" />
-            <h3 className="font-semibold text-sm">My Forms</h3>
-            <p className="text-xs text-gray-500 mt-1">View and continue saved forms</p>
+            <h3 className="font-semibold text-sm">My Documents</h3>
+            <p className="text-xs text-gray-500 mt-1">View and continue your saved documents</p>
           </Card>
         </Link>
         <Link to="/chat">
@@ -58,7 +58,7 @@ export default function Dashboard() {
       <Card className="p-5">
         <h3 className="font-semibold text-sm mb-3 flex items-center gap-2"><Clock className="h-4 w-4 text-gray-400" /> Recent Activity</h3>
         <p className="text-sm text-gray-400 text-center py-6">No recent activity. Start filling a form to see it here.</p>
-        <div className="text-center"><Link to="/forms"><Button size="sm" variant="outline">Browse Forms <ArrowRight className="h-3 w-3" /></Button></Link></div>
+        <div className="text-center"><Link to="/"><Button size="sm" variant="outline">Upload a Document <ArrowRight className="h-3 w-3" /></Button></Link></div>
       </Card>
 
       {/* Quick links */}
