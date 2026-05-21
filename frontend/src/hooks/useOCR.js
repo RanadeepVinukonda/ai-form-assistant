@@ -2,9 +2,9 @@ import { useState, useCallback } from "react"
 import { createWorker } from "tesseract.js"
 
 async function pdfToImage(file, setProgress) {
-  const { getDocument, GlobalWorkerOptions } = await import("pdfjs-dist")
-  GlobalWorkerOptions.workerSrc = undefined
-  const pdf = await getDocument({ data: await file.arrayBuffer() }).promise
+  const pdfjs = await import("pdfjs-dist")
+  pdfjs.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs"
+  const pdf = await pdfjs.getDocument({ data: await file.arrayBuffer() }).promise
   const canvas = document.createElement("canvas")
   const ctx = canvas.getContext("2d")
   let fullText = ""
