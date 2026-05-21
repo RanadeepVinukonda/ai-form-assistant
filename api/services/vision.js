@@ -5,9 +5,11 @@ const client = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY || "",
 })
 
+const VISION_MODEL = process.env.OPENROUTER_VISION_MODEL || "openrouter/free"
+
 async function extractText(imageBase64, mimeType) {
   const res = await client.chat.completions.create({
-    model: "google/gemini-2.0-flash-exp:free",
+    model: VISION_MODEL,
     messages: [{
       role: "user",
       content: [
@@ -30,7 +32,7 @@ async function extractStructured(base64Images, formSchema) {
     })),
   ]
   const res = await client.chat.completions.create({
-    model: "google/gemini-2.0-flash-exp:free",
+    model: VISION_MODEL,
     messages: [{ role: "user", content }],
     max_tokens: 8192,
   })
