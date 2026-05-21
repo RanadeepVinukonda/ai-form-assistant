@@ -1,6 +1,7 @@
 {
   "name": "ai-form-assistant",
   "private": true,
+  "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "cd frontend && pnpm dev",
     "build": "cd frontend && pnpm build",
