@@ -15,16 +15,13 @@ export default function DocumentUploader({ onTextExtracted }) {
     setLoading(true)
     setProgress(0)
 
-    // Simulate progress — Tesseract runs in worker
-    const progInterval = setInterval(() => setProgress((p) => Math.min(p + 10, 90)), 500)
-
     const { createWorker } = await import("tesseract.js")
-    const worker = await createWorker("eng")
-    worker.setProgressHandler((p) => setProgress(Math.round(p.progress * 100)))
+    const worker = await createWorker("eng", 1, {
+      logger: (m) => { if (m.status === "recognizing text") setProgress(Math.round(m.progress * 100)) },
+    })
     const { data } = await worker.recognize(file)
     await worker.terminate()
 
-    clearInterval(progInterval)
     setProgress(100)
 
     const extracted = data.text.trim()

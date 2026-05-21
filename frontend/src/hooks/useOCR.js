@@ -9,8 +9,9 @@ export function useOCR() {
   const [worker, setWorker] = useState(null)
 
   const initWorker = useCallback(async () => {
-    const w = await createWorker("eng")
-    w.setProgressHandler((p) => setProgress(Math.round(p.progress * 100)))
+    const w = await createWorker("eng", 1, {
+      logger: (m) => { if (m.status === "recognizing text") setProgress(Math.round(m.progress * 100)) },
+    })
     setWorker(w)
     return w
   }, [])
