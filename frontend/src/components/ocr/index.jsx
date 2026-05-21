@@ -33,6 +33,10 @@ export default function DocumentUploader({ onTextExtracted }) {
     return fullText
   }
 
+  function isPdf(file) {
+    return file.type === "application/pdf" || file.name?.toLowerCase().endsWith(".pdf")
+  }
+
   async function handleFile(file) {
     if (!file) return
     setFileName(file.name)
@@ -40,7 +44,7 @@ export default function DocumentUploader({ onTextExtracted }) {
     setProgress(0)
 
     let extracted
-    if (file.type === "application/pdf") {
+    if (isPdf(file)) {
       extracted = await pdfToImage(file)
     } else {
       const { createWorker } = await import("tesseract.js")

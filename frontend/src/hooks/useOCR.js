@@ -39,13 +39,17 @@ export function useOCR() {
     return w
   }, [])
 
+  function isPdf(file) {
+    return file.type === "application/pdf" || file.name?.toLowerCase().endsWith(".pdf")
+  }
+
   const extractText = useCallback(async (file) => {
     setLoading(true)
     setError(null)
     setProgress(0)
     try {
       let text
-      if (file.type === "application/pdf") {
+      if (isPdf(file)) {
         text = await pdfToImage(file, setProgress)
       } else {
         const w = worker || (await initWorker())
