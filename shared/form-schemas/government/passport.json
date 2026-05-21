@@ -1,0 +1,145 @@
+[
+  {
+    "id": "fullName",
+    "type": "text",
+    "label": "Full Name (as in Passport)",
+    "required": true,
+    "section": "personal"
+  },
+  {
+    "id": "dob",
+    "type": "date",
+    "label": "Date of Birth",
+    "required": true,
+    "section": "personal"
+  },
+  {
+    "id": "placeOfBirth",
+    "type": "text",
+    "label": "Place of Birth",
+    "required": true,
+    "section": "personal"
+  },
+  {
+    "id": "gender",
+    "type": "radio",
+    "label": "Gender",
+    "required": true,
+    "section": "personal",
+    "options": [
+      { "value": "male", "label": "Male" },
+      { "value": "female", "label": "Female" }
+    ]
+  },
+  {
+    "id": "fatherName",
+    "type": "text",
+    "label": "Father's / Legal Guardian's Name",
+    "required": true,
+    "section": "personal"
+  },
+  {
+    "id": "motherName",
+    "type": "text",
+    "label": "Mother's Name",
+    "required": true,
+    "section": "personal"
+  },
+  {
+    "id": "maritalStatus",
+    "type": "select",
+    "label": "Marital Status",
+    "required": true,
+    "section": "personal",
+    "options": [
+      { "value": "single", "label": "Single" },
+      { "value": "married", "label": "Married" },
+      { "value": "divorced", "label": "Divorced" },
+      { "value": "widowed", "label": "Widowed" }
+    ]
+  },
+  {
+    "id": "address",
+    "type": "textarea",
+    "label": "Residential Address",
+    "required": true,
+    "section": "address"
+  },
+  {
+    "id": "state",
+    "type": "text",
+    "label": "State / Province",
+    "required": true,
+    "section": "address"
+  },
+  {
+    "id": "pinCode",
+    "type": "text",
+    "label": "PIN Code",
+    "required": true,
+    "section": "address",
+    "pattern": "^[0-9]{6}$",
+    "maxLength": 6
+  },
+  {
+    "id": "mobile",
+    "type": "tel",
+    "label": "Mobile Number",
+    "required": true,
+    "section": "contact"
+  },
+  {
+    "id": "email",
+    "type": "email",
+    "label": "Email Address",
+    "required": true,
+    "section": "contact"
+  },
+  {
+    "id": "applicationType",
+    "type": "select",
+    "label": "Application Type",
+    "required": true,
+    "section": "application",
+    "options": [
+      { "value": "fresh", "label": "Fresh Application" },
+      { "value": "reissue", "label": "Re-issue" },
+      { "value": "renewal", "label": "Renewal" }
+    ]
+  },
+  {
+    "id": "passportType",
+    "type": "select",
+    "label": "Passport Booklet Type",
+    "required": true,
+    "section": "application",
+    "options": [
+      { "value": "36", "label": "36 Pages" },
+      { "value": "60", "label": "60 Pages" }
+    ]
+  },
+  {
+    "id": "aadhaarNumber",
+    "type": "text",
+    "label": "Aadhaar Number",
+    "required": true,
+    "section": "documents",
+    "pattern": "^[0-9]{12}$",
+    "maxLength": 12
+  },
+  {
+    "id": "panNumber",
+    "type": "text",
+    "label": "PAN Number (optional)",
+    "section": "documents",
+    "pattern": "^[A-Z]{5}[0-9]{4}[A-Z]$",
+    "maxLength": 10
+  },
+  {
+    "id": "existingPassportNumber",
+    "type": "text",
+    "label": "Existing Passport Number (if re-issue/renewal)",
+    "section": "documents",
+    "dependsOn": { "field": "applicationType", "value": "reissue" }
+  }
+]

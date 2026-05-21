@@ -1,0 +1,198 @@
+[
+  {
+    "id": "purpose",
+    "type": "select",
+    "label": "Purpose of Visit",
+    "required": true,
+    "section": "personal",
+    "options": [
+      { "value": "tourism", "label": "Tourism / Vacation" },
+      { "value": "business", "label": "Business" },
+      { "value": "study", "label": "Study" },
+      { "value": "transit", "label": "Transit" },
+      { "value": "medical", "label": "Medical Treatment" },
+      { "value": "visit", "label": "Visiting Family/Friends" }
+    ],
+    "helpText": "Select the primary purpose of your visit to the United States.",
+    "explanationId": "ds160_purpose"
+  },
+  {
+    "id": "surname",
+    "type": "text",
+    "label": "Surname (as in Passport)",
+    "required": true,
+    "section": "personal",
+    "pattern": "^[A-Za-z\\s\\-']+$",
+    "errorMessage": "Enter your surname exactly as shown in your passport",
+    "maxLength": 50
+  },
+  {
+    "id": "givenName",
+    "type": "text",
+    "label": "Given Name (as in Passport)",
+    "required": true,
+    "section": "personal",
+    "pattern": "^[A-Za-z\\s\\-']+$",
+    "maxLength": 50
+  },
+  {
+    "id": "dob",
+    "type": "date",
+    "label": "Date of Birth",
+    "required": true,
+    "section": "personal",
+    "helpText": "Format: MM/DD/YYYY"
+  },
+  {
+    "id": "nationality",
+    "type": "text",
+    "label": "Nationality",
+    "required": true,
+    "section": "personal"
+  },
+  {
+    "id": "gender",
+    "type": "radio",
+    "label": "Gender",
+    "required": true,
+    "section": "personal",
+    "options": [
+      { "value": "male", "label": "Male" },
+      { "value": "female", "label": "Female" }
+    ]
+  },
+  {
+    "id": "passportNumber",
+    "type": "text",
+    "label": "Passport Number",
+    "required": true,
+    "section": "passport",
+    "pattern": "^[A-Z0-9]+$"
+  },
+  {
+    "id": "passportIssued",
+    "type": "date",
+    "label": "Passport Issue Date",
+    "required": true,
+    "section": "passport"
+  },
+  {
+    "id": "passportExpiry",
+    "type": "date",
+    "label": "Passport Expiry Date",
+    "required": true,
+    "section": "passport"
+  },
+  {
+    "id": "haveTravelPlan",
+    "type": "radio",
+    "label": "Do you have a detailed travel plan?",
+    "required": true,
+    "section": "travel",
+    "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" }
+    ]
+  },
+  {
+    "id": "arrivalDate",
+    "type": "date",
+    "label": "Intended Arrival Date",
+    "required": true,
+    "section": "travel",
+    "dependsOn": { "field": "haveTravelPlan", "value": "yes" }
+  },
+  {
+    "id": "addressUS",
+    "type": "textarea",
+    "label": "Address While in the US",
+    "required": true,
+    "section": "travel"
+  },
+  {
+    "id": "hasUSContact",
+    "type": "radio",
+    "label": "Do you have a contact person/organization in the US?",
+    "required": true,
+    "section": "contact",
+    "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" }
+    ]
+  },
+  {
+    "id": "contactName",
+    "type": "text",
+    "label": "Contact Name in US",
+    "section": "contact",
+    "dependsOn": { "field": "hasUSContact", "value": "yes" }
+  },
+  {
+    "id": "contactRelation",
+    "type": "text",
+    "label": "Relationship with Contact",
+    "section": "contact",
+    "dependsOn": { "field": "hasUSContact", "value": "yes" }
+  },
+  {
+    "id": "employmentStatus",
+    "type": "select",
+    "label": "Employment Status",
+    "required": true,
+    "section": "employment",
+    "options": [
+      { "value": "employed", "label": "Employed" },
+      { "value": "self-employed", "label": "Self-Employed" },
+      { "value": "student", "label": "Student" },
+      { "value": "retired", "label": "Retired" },
+      { "value": "unemployed", "label": "Not Employed" }
+    ]
+  },
+  {
+    "id": "employerName",
+    "type": "text",
+    "label": "Employer Name",
+    "section": "employment",
+    "dependsOn": { "field": "employmentStatus", "value": "employed" }
+  },
+  {
+    "id": "monthlyIncome",
+    "type": "number",
+    "label": "Monthly Income (USD)",
+    "section": "employment",
+    "min": 0
+  },
+  {
+    "id": "hasBeenUS",
+    "type": "radio",
+    "label": "Have you ever been to the US before?",
+    "required": true,
+    "section": "security",
+    "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" }
+    ]
+  },
+  {
+    "id": "overstayVisa",
+    "type": "radio",
+    "label": "Have you ever overstayed a visa?",
+    "required": true,
+    "section": "security",
+    "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" }
+    ]
+  },
+  {
+    "id": "criminalHistory",
+    "type": "radio",
+    "label": "Do you have any criminal history?",
+    "required": true,
+    "section": "security",
+    "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" }
+    ]
+  }
+]

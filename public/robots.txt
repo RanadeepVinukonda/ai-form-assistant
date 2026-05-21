@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ai-form-assistant.vercel.app/sitemap.xml

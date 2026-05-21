@@ -1,0 +1,134 @@
+[
+  {
+    "id": "fullName",
+    "type": "text",
+    "label": "Full Name",
+    "required": true,
+    "section": "personal"
+  },
+  {
+    "id": "dob",
+    "type": "date",
+    "label": "Date of Birth",
+    "required": true,
+    "section": "personal"
+  },
+  {
+    "id": "gender",
+    "type": "radio",
+    "label": "Gender",
+    "required": true,
+    "section": "personal",
+    "options": [
+      { "value": "male", "label": "Male" },
+      { "value": "female", "label": "Female" }
+    ]
+  },
+  {
+    "id": "category",
+    "type": "select",
+    "label": "Category",
+    "required": true,
+    "section": "personal",
+    "options": [
+      { "value": "general", "label": "General" },
+      { "value": "obc", "label": "OBC" },
+      { "value": "sc", "label": "SC" },
+      { "value": "st", "label": "ST" },
+      { "value": "ews", "label": "EWS" }
+    ]
+  },
+  {
+    "id": "familyAnnualIncome",
+    "type": "number",
+    "label": "Family Annual Income (₹)",
+    "required": true,
+    "section": "economic",
+    "min": 0
+  },
+  {
+    "id": "incomeSource",
+    "type": "select",
+    "label": "Source of Income",
+    "required": true,
+    "section": "economic",
+    "options": [
+      { "value": "agriculture", "label": "Agriculture" },
+      { "value": "salary", "label": "Salary" },
+      { "value": "business", "label": "Business" },
+      { "value": "daily-wage", "label": "Daily Wage" },
+      { "value": "pension", "label": "Pension" },
+      { "value": "other", "label": "Other" }
+    ]
+  },
+  {
+    "id": "ownHouse",
+    "type": "radio",
+    "label": "Do you own a house?",
+    "required": true,
+    "section": "economic",
+    "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" }
+    ]
+  },
+  {
+    "id": "haveVehicle",
+    "type": "radio",
+    "label": "Do you own a vehicle?",
+    "required": true,
+    "section": "economic",
+    "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" }
+    ]
+  },
+  {
+    "id": "address",
+    "type": "textarea",
+    "label": "Permanent Address",
+    "required": true,
+    "section": "address"
+  },
+  {
+    "id": "state",
+    "type": "text",
+    "label": "State",
+    "required": true,
+    "section": "address"
+  },
+  {
+    "id": "district",
+    "type": "text",
+    "label": "District",
+    "required": true,
+    "section": "address"
+  },
+  {
+    "id": "villageTown",
+    "type": "text",
+    "label": "Village / Town",
+    "required": true,
+    "section": "address"
+  },
+  {
+    "id": "purposeOfCertificate",
+    "type": "select",
+    "label": "Purpose of Income Certificate",
+    "required": true,
+    "section": "purpose",
+    "options": [
+      { "value": "education", "label": "Education (Scholarship/Fee Waiver)" },
+      { "value": "government-scheme", "label": "Government Scheme Benefits" },
+      { "value": "employment", "label": "Employment" },
+      { "value": "medical", "label": "Medical Benefits" },
+      { "value": "other", "label": "Other" }
+    ]
+  },
+  {
+    "id": "rationCardNumber",
+    "type": "text",
+    "label": "Ration Card Number (if available)",
+    "section": "documents"
+  }
+]

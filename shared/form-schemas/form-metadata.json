@@ -1,0 +1,102 @@
+{
+  "ds-160": {
+    "title": "DS-160 (US Visa Application)",
+    "slug": "ds-160",
+    "category": "visa",
+    "shortDescription": "Online Nonimmigrant Visa Application form for the United States",
+    "longDescription": "Form DS-160 is the standard online application form for nonimmigrant visas to the United States. It collects personal, travel, and security information required for visa processing.",
+    "authority": "U.S. Department of State",
+    "authorityUrl": "https://ceac.state.gov/genniv/",
+    "processingTime": "15-30 minutes",
+    "fees": "$160 (varies by visa type)",
+    "sections": ["personal", "passport", "travel", "contact", "employment", "security"],
+    "sectionLabels": { "personal": "Personal Info", "passport": "Passport Details", "travel": "Travel Plans", "contact": "US Contact", "employment": "Employment", "security": "Security & Background" },
+    "faqs": [
+      { "question": "How long is the DS-160 valid?", "answer": "The DS-160 is valid for 12 months from the date of submission." },
+      { "question": "Can I save and return to my DS-160?", "answer": "Yes, you can save your application using the Application ID provided at the start." },
+      { "question": "Do I need to print the confirmation page?", "answer": "Yes, you must bring the barcode confirmation page to your visa interview." }
+    ],
+    "tags": ["usa", "visa", "nonimmigrant", "b1", "b2", "f1", "h1b", "l1"],
+    "seo": { "metaTitle": "DS-160 Form Guide & Auto-Fill: US Visa Application Assistant", "metaDescription": "Complete your DS-160 US visa application online with AI-powered guidance. Step-by-step help for every field on the Nonimmigrant Visa Application form." }
+  },
+  "itr-1": {
+    "title": "ITR-1 (Income Tax Return - India)",
+    "slug": "itr-1",
+    "category": "tax",
+    "shortDescription": "Income Tax Return for resident individuals with salary income",
+    "longDescription": "ITR-1 (Sahaj) is for resident individuals with total income up to ₹50 lakh from salary, one house property, and other sources.",
+    "authority": "Income Tax Department, Government of India",
+    "authorityUrl": "https://www.incometax.gov.in/",
+    "processingTime": "10-20 minutes",
+    "fees": "Free (e-filing)",
+    "sections": ["personal", "income", "deductions", "taxes", "banking"],
+    "sectionLabels": { "personal": "Personal Info", "income": "Income Details", "deductions": "Deductions (80C, 80D, etc.)", "taxes": "Tax Paid", "banking": "Bank Account" },
+    "faqs": [
+      { "question": "Who can file ITR-1?", "answer": "Resident individuals with income up to ₹50 lakh from salary, one house property, and other sources." },
+      { "question": "What documents do I need?", "answer": "Form 16, bank statements, investment proofs, TDS certificate." },
+      { "question": "When is the ITR deadline?", "answer": "Typically July 31st of the assessment year." }
+    ],
+    "tags": ["india", "tax", "income-tax", "itr", "filing", "salary"],
+    "seo": { "metaTitle": "ITR-1 Filing Guide: AI-Assisted Income Tax Return (Sahaj)", "metaDescription": "File your ITR-1 (Sahaj) online with AI guidance. Step-by-step form filing for Indian salary earners with automatic deduction calculations." }
+  },
+  "passport": {
+    "title": "Passport Application (India)",
+    "slug": "passport",
+    "category": "government",
+    "shortDescription": "Apply for or renew an Indian passport online",
+    "longDescription": "Online application form for a new passport or renewal of an existing Indian passport under the Passport Seva system.",
+    "authority": "Ministry of External Affairs, Government of India",
+    "authorityUrl": "https://portal2.passportindia.gov.in/",
+    "processingTime": "10-15 minutes",
+    "fees": "₹1,500 (36 pages), varies by type",
+    "sections": ["personal", "address", "contact", "application", "documents"],
+    "sectionLabels": { "personal": "Personal Details", "address": "Address", "contact": "Contact Info", "application": "Application Details", "documents": "Document Reference" },
+    "faqs": [
+      { "question": "What documents are needed for a new passport?", "answer": "Aadhaar, birth certificate, address proof, and photographs." },
+      { "question": "How long does passport issuance take?", "answer": "Typically 7-15 working days after verification." },
+      { "question": "Can I renew my passport from abroad?", "answer": "Yes, through the nearest Indian embassy or consulate." }
+    ],
+    "tags": ["india", "passport", "travel", "identity", "government"],
+    "seo": { "metaTitle": "Indian Passport Application Guide: Online Form Assistant", "metaDescription": "Apply for a new Indian passport or renewal with AI form-filling assistance. Step-by-step guidance through the Passport Seva online application." }
+  },
+  "income-certificate": {
+    "title": "Income Certificate Application",
+    "slug": "income-certificate",
+    "category": "government",
+    "shortDescription": "Apply for an income certificate from state/central authorities",
+    "longDescription": "Online application form to obtain an income certificate required for education, government schemes, and employment benefits.",
+    "authority": "State Government / Tehsildar Office",
+    "authorityUrl": "",
+    "processingTime": "5-10 minutes",
+    "fees": "Free (nominal fee may apply)",
+    "sections": ["personal", "economic", "address", "purpose", "documents"],
+    "sectionLabels": { "personal": "Personal Info", "economic": "Economic Status", "address": "Address Details", "purpose": "Purpose", "documents": "Document Reference" },
+    "faqs": [
+      { "question": "Who can apply for an income certificate?", "answer": "Any citizen who needs income proof for government benefits, education, or employment." },
+      { "question": "What documents are required?", "answer": "Aadhaar card, income proof, and address proof." },
+      { "question": "How long is the certificate valid?", "answer": "Typically 1-3 years, depending on the issuing authority." }
+    ],
+    "tags": ["india", "income-certificate", "government", "schemes", "scholarship"],
+    "seo": { "metaTitle": "Income Certificate Application: Online Form Guide", "metaDescription": "Apply for an income certificate online for education, government schemes, and employment benefits. AI-guided form-filling assistance." }
+  },
+  "scholarship": {
+    "title": "Scholarship Application (General)",
+    "slug": "scholarship",
+    "category": "education",
+    "shortDescription": "Apply for merit, need-based, or international scholarships",
+    "longDescription": "General scholarship application form suitable for national and international scholarship programs including merit-based, need-based, sports, and research scholarships.",
+    "authority": "Various (Educational Institutions / Government / Private)",
+    "authorityUrl": "",
+    "processingTime": "15-25 minutes",
+    "fees": "Varies by program",
+    "sections": ["personal", "contact", "academic", "course", "scholarship", "financial", "documents", "declaration"],
+    "sectionLabels": { "personal": "Personal Info", "contact": "Contact", "academic": "Academic Background", "course": "Course Details", "scholarship": "Scholarship Type", "financial": "Financial Info", "documents": "Documents", "declaration": "Declaration" },
+    "faqs": [
+      { "question": "What is the typical scholarship deadline?", "answer": "Deadlines vary by program, typically 6-12 months before the academic year starts." },
+      { "question": "Can I apply for multiple scholarships?", "answer": "Yes, but check each program's terms for combined awards." },
+      { "question": "What documents are typically needed?", "answer": "Transcripts, recommendation letters, statement of purpose, and financial proof." }
+    ],
+    "tags": ["scholarship", "education", "merit", "need-based", "international"],
+    "seo": { "metaTitle": "Scholarship Application Guide: AI-Powered Form Assistant", "metaDescription": "Apply for scholarships online with AI-guided form filling. Supports merit, need-based, sports, research, and international scholarship applications." }
+  }
+}
